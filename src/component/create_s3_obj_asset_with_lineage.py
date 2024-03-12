@@ -22,14 +22,15 @@ def create_s3_obj_asset_with_lineage(suffix):
     :param suffix: suffix to be added after asset-name
     :return: None
     """
-    # create s3 connection
+    # create s3 connection asset
+    logger.info(f"# Starting creating S3 connection asset with name aws-s3-connection and suffix {suffix}")
     s3_conn_qname = atlan_accessor.create_s3_conn_asset("aws-s3-connection", SUFFIX)
 
     # Adding wait time after connection as mentioned in doc -
     # https://developer.atlan.com/patterns/create/aws/?h=s3#connection
     time.sleep(10)
 
-    # create s3 bucket
+    # create s3 bucket asset
     s3_bucket_qname = atlan_accessor.create_s3_bucket_asset("atlan-tech-challenge", suffix, s3_conn_qname)
     # fetch s3 objects
     s3_obj_list = s3_accessor.get_s3_obj_list(S3_BUCKET_NAME)
