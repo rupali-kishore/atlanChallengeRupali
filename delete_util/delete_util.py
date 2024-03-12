@@ -53,7 +53,7 @@ def delete_all_asset(suffix):
     # Delete S3 bucket
     delete_asset_with_str(S3Bucket, f"atlan-tech-challenge-{suffix}", suffix)
     # Delete S3 connection
-    # delete_asset_with_str(Connection, f"aws-s3-connection-{my_suffix}",my_suffix)
+    delete_asset_with_str(Connection, f"aws-s3-connection-{suffix}",suffix)
 
 
 # for running locally

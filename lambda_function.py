@@ -19,8 +19,8 @@ def lambda_handler(event, context):
     """
     Method to trigger AWS lambda function which then invokes the controller/component
 
-    :param event: Lambda event
-    :param context: AWS context for Lamdbda execution
+    :param event: Lambda event which contains data passed to the Lambda function when it's invoked
+    :param context: AWS context for Lambda execution (provides runtime information about the Lambda function)
     :return: Status code and message
     """
 
@@ -28,6 +28,7 @@ def lambda_handler(event, context):
     try:
         # fetch suffix from payload
         suffix = event['suffix']
+
         logger.info(f"Suffix value from payload:{suffix}")
         if suffix is None or suffix == "":
             raise KeyError('Suffix value not provided')
